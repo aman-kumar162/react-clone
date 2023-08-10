@@ -3,15 +3,18 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Navbar from './Components/Navbar.js';
-
+import Textdoc from './Components/Textdoc';
 class App extends Component {
   render() {
     return (
-        <e>
+      
+        <div className="container">
           
           <Navbar titles="TextUtils" move="Home" contact="Contact for more"  />
-           
-        </e> 
+          <div className='container my-3'><Textdoc/></div>
+        </div>   
+        
+      
     );
   }
 }
