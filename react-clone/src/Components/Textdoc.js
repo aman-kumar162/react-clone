@@ -6,16 +6,29 @@ export default function Textdoc(props) {
         console.log("uppercase Conveted" + text);
         let newText = text.toUpperCase();
         setText(newText);
+        props.showalert("convert to Upper Case","success");
     }
     const handleloClick = () => {
         console.log("uppercase Conveted" + text);
         let newText = text.toLowerCase();
         setText(newText);
+        setText(newText);
+        props.showalert("convert to lower Case","success");
     }
     const handleclearClick = () => {
         console.log("uppercase Conveted" + text);
         let newText = "";
         setText(newText);
+        setText(newText);
+        props.showalert("Text cleared","success");
+    }
+    const handlecopy=()=>{
+        console.log("copy done");
+        var text=document.getElementById("mybox");
+        text.ariaSelected();
+        text.setSelectionRange(0,9999);
+        navigator.clipboard.writeText(text.value);
+        props.showalert("copied to clipboard","success");
     }
     const handleOnChange = (event) => {
         console.log("on Change");
@@ -26,7 +39,7 @@ export default function Textdoc(props) {
     return (
         <>
             <div className="mb-3">
-                <label for="exampleFormControlInput1" className="form-label">Mail address</label>
+                <label htmlFor="exampleFormControlInput1" className="form-label">Mail address</label>
                 <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@examplramesnitmukesh.com" />
             </div>
             <h1> Enter the text below </h1>
@@ -35,10 +48,12 @@ export default function Textdoc(props) {
             <div className="mb-3">
 
                 <label for="examp" className="form-label"></label>
-                <textarea className="form-control" value={text} onChange={handleOnChange} id="examp" rows="8"></textarea>
+                <textarea  id="mybox" className="form-control" value={text} onChange={handleOnChange} rows="8"></textarea>
             </div>
                 <button type="button" className="btn btn-primary mx-2" onClick={handleUpClick}> Convert to UpperCase</button>
                 <button type="button" className="btn btn-primary mx-2" onClick={handleloClick}> Convert to LowerCase</button>
+                <button type="button" className="btn btn-primary mx-2" onClick={handleclearClick}> Reset</button>
+                <button type="button" className="btn btn-primary mx-2" onClick={handlecopy}> Copied to clipboard</button>
                 <button type="button" className="btn btn-primary mx-2" onClick={handleclearClick}> Reset</button>
                 
         </div>
@@ -49,6 +64,7 @@ export default function Textdoc(props) {
             <h2> Preview</h2>
             <p>{text}</p>
         </div>
+        
 
         </>
     )
